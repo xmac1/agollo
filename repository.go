@@ -180,6 +180,15 @@ func GetIntValue(key string, defaultValue int) int {
 	return i
 }
 
+func GetValue(key string)(buf []byte, err error) {
+	value, err := apolloConfigCache.Get([]byte(key))
+	if err != nil {
+		return
+	}
+	buf = value
+	return
+}
+
 func GetFloatValue(key string, defaultValue float64) float64 {
 	value := getValue(key)
 
