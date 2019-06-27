@@ -1,4 +1,4 @@
-module github.com/xmac1/agollo
+module github.com/xmac1/agollo/v2
 
 go 1.12
 
