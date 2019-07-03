@@ -192,19 +192,19 @@ func initServerIpList() {
 }
 
 func syncServerIpListSuccessCallBack(responseBody []byte)(o interface{},err error){
-	logger.Debug("get all server info:",string(responseBody))
+	logger.Println(responseBody))
 
 	tmpServerInfo:=make([]*serverInfo,0)
 
 	err= json.Unmarshal(responseBody,&tmpServerInfo)
 
 	if err!=nil{
-		logger.Error("Unmarshal json Fail,Error:",err)
+		logger.Println("Unmarshal json Fail,Error:",err)
 		return
 	}
 
 	if len(tmpServerInfo)==0 {
-		logger.Info("get no real server!")
+		logger.Println("get no real server!")
 		return
 	}
 

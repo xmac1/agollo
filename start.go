@@ -1,14 +1,24 @@
 package agollo
 
+import (
+	"io"
+	"log"
+	"os"
+)
+
 //start apollo
 func Start() error {
 	return StartWithLogger(nil)
 }
 
-func StartWithLogger(loggerInterface LoggerInterface) error {
-	if loggerInterface != nil {
-		initLogger(loggerInterface)
+var logger *log.Logger
+
+func StartWithLogger(writer io.Writer) error {
+	if writer == nil {
+		writer = os.Stdout
 	}
+
+	logger.Println(writer, "", log.LstdFlags | log.Lshortfile)
 
   //init server ip list
   go initServerIpList()
@@ -27,7 +37,7 @@ func StartWithLogger(loggerInterface LoggerInterface) error {
 	//start long poll sync config
 	go StartRefreshConfig(&NotifyConfigComponent{})
 
-	logger.Info("agollo start finished , error:",err)
+	logger.Println("agollo start finished , error:",err)
 	
 	return err
 }

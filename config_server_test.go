@@ -42,7 +42,7 @@ func runMockConfigServer(handler func(http.ResponseWriter, *http.Request)) {
 
 	err:=http.ListenAndServe(fmt.Sprintf("%s",appConfig.Ip), nil)
 	if err!=nil{
-		logger.Error("runMockConfigServer err:",err)
+		logger.Println("runMockConfigServer err:",err)
 	}
 }
 

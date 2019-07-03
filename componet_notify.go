@@ -113,7 +113,7 @@ func toApolloConfig(resBody []byte) ([]*apolloNotify,error) {
 	err:=json.Unmarshal(resBody,&remoteConfig)
 
 	if err!=nil{
-		logger.Error("Unmarshal Msg Fail,Error:",err)
+		logger.Println("Unmarshal Msg Fail,Error:",err)
 		return nil,err
 	}
 	return remoteConfig,nil
@@ -159,7 +159,7 @@ func autoSyncConfigServicesSuccessCallBack(responseBody []byte)(o interface{},er
 	apolloConfig,err:=createApolloConfigWithJson(responseBody)
 
 	if err!=nil{
-		logger.Error("Unmarshal Msg Fail,Error:",err)
+		logger.Println("Unmarshal Msg Fail,Error:",err)
 		return nil,err
 	}
 

@@ -18,10 +18,10 @@ func runMockNotifyServer(handler func(http.ResponseWriter, *http.Request)) {
 		panic("can not find apollo config!please confirm!")
 	}
 
-	logger.Info("runMockNotifyServer:",appConfig.Ip)
+	logger.Println("runMockNotifyServer:",appConfig.Ip)
 	err:=http.ListenAndServe(fmt.Sprintf("%s",appConfig.Ip), nil)
 	if err!=nil{
-		logger.Error("runMockConfigServer err:",err)
+		logger.Println("runMockConfigServer err:",err)
 	}
 }
 

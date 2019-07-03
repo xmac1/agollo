@@ -31,7 +31,7 @@ type currentApolloConfig struct {
 
 func updateApolloConfig(apolloConfig *ApolloConfig,isBackupConfig bool) {
 	if apolloConfig == nil {
-		logger.Error("apolloConfig is null,can't update!")
+		logger.Println("apolloConfig is null,can't update!")
 		return
 	}
 	//get change list
@@ -143,7 +143,7 @@ func GetCurrentApolloConfig() *ApolloConnConfig {
 func getConfigValue(key string) interface{} {
 	value, err := apolloConfigCache.Get([]byte(key))
 	if err != nil {
-		logger.Errorf("get config value fail!key:%s,err:%s", key,err)
+		logger.Println("get config value fail!key:%s,err:%s", key,err)
 		return empty
 	}
 
@@ -173,7 +173,7 @@ func GetIntValue(key string, defaultValue int) int {
 
 	i, err := strconv.Atoi(value)
 	if err != nil {
-		logger.Debug("convert to int fail!error:", err)
+		logger.Println("convert to int fail!error:", err)
 		return defaultValue
 	}
 
@@ -194,7 +194,7 @@ func GetFloatValue(key string, defaultValue float64) float64 {
 
 	i, err := strconv.ParseFloat(value, 64)
 	if err != nil {
-		logger.Debug("convert to float fail!error:", err)
+		logger.Println("convert to float fail!error:", err)
 		return defaultValue
 	}
 
@@ -206,7 +206,7 @@ func GetBoolValue(key string, defaultValue bool) bool {
 
 	b, err := strconv.ParseBool(value)
 	if err != nil {
-		logger.Debug("convert to bool fail!error:", err)
+		logger.Println("convert to bool fail!error:", err)
 		return defaultValue
 	}
 
