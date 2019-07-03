@@ -192,7 +192,7 @@ func initServerIpList() {
 }
 
 func syncServerIpListSuccessCallBack(responseBody []byte)(o interface{},err error){
-	logger.Println(responseBody))
+	logger.Println(responseBody)
 
 	tmpServerInfo:=make([]*serverInfo,0)
 
