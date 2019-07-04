@@ -18,7 +18,7 @@ func StartWithLogger(writer io.Writer) error {
 		writer = os.Stdout
 	}
 
-	logger.Println(writer, "", log.LstdFlags | log.Lshortfile)
+	logger = log.New(writer, "", log.LstdFlags | log.Lshortfile)
 
   //init server ip list
   go initServerIpList()
