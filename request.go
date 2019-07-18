@@ -48,6 +48,8 @@ func request(requestUrl string, connectionConfig *ConnectConfig, callBack *CallB
 			return
 		}
 
+		logger.Println("[DEBUG]: ", string(responseBody))
+
 		if callBack != nil && callBack.SuccessCallBack != nil {
 			return callBack.SuccessCallBack(responseBody)
 		} else {
