@@ -29,7 +29,7 @@ type currentApolloConfig struct {
 	config *ApolloConnConfig
 }
 
-func updateApolloConfig(apolloConfig *ApolloConfig,isBackupConfig bool) {
+func updateApolloConfig(apolloConfig *ApolloConfig, isBackupConfig bool) {
 	if apolloConfig == nil {
 		logger.Println("apolloConfig is null,can't update!")
 		return
@@ -51,10 +51,11 @@ func updateApolloConfig(apolloConfig *ApolloConfig,isBackupConfig bool) {
 
 	currentConnApolloConfig.config = &apolloConfig.ApolloConnConfig
 
-	if isBackupConfig{
-		//write config file async
-		go writeConfigFile(apolloConfig,appConfig.getBackupConfigPath())
-	}
+	// remove file back up for availability todo
+	//if isBackupConfig{
+	//	//write config file async
+	//	go writeConfigFile(apolloConfig,appConfig.getBackupConfigPath())
+	//}
 }
 
 func updateApolloConfigCache(configurations map[string]string, expireTime int) map[string]*ConfigChange {
@@ -143,7 +144,7 @@ func GetCurrentApolloConfig() *ApolloConnConfig {
 func getConfigValue(key string) interface{} {
 	value, err := apolloConfigCache.Get([]byte(key))
 	if err != nil {
-		logger.Println("get config value fail!key:%s,err:%s", key,err)
+		logger.Println("get config value fail!key:%s,err:%s", key, err)
 		return empty
 	}
 
@@ -180,7 +181,7 @@ func GetIntValue(key string, defaultValue int) int {
 	return i
 }
 
-func GetValue(key string)(buf []byte, err error) {
+func GetValue(key string) (buf []byte, err error) {
 	value, err := apolloConfigCache.Get([]byte(key))
 	if err != nil {
 		return

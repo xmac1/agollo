@@ -20,9 +20,6 @@ func StartWithLogger(writer io.Writer) error {
 
 	logger = log.New(writer, "", log.LstdFlags | log.Lshortfile)
 
-  //init server ip list
-  go initServerIpList()
-
 	//first sync
 	err := notifySyncConfigServices()
 
