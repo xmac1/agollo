@@ -21,7 +21,7 @@ type ConnectConfig struct {
 }
 
 var client = &http.Client{
-	Timeout: 5 * time.Second,
+	Timeout: 2 * time.Minute,
 	Transport: &http.Transport{
 		ResponseHeaderTimeout: 2 * time.Minute,
 	},
